@@ -64,6 +64,7 @@ api:
     key: "8G0kVEA0/DqgAavgKNyy9EYUrWo6pEZM38JVMAryJv8="
 
 ota:
+  platform: esphome
   password: "2a26484203d80a83798414c879541760"
 
 ethernet:
