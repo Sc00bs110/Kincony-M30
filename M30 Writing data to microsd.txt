@@ -1,0 +1,71 @@
+#include "FS.h"
+#include "SD.h"
+#include "SD_MMC.h"
+#define BOARD_HAS_1BIT_SDMMC
+void WriteFile(fs::FS &fs, const char *path, uint8_t *buf, int len)
+{
+  //unsigned long start_time = millis();
+  Serial.printf("write [%s]...\n", path);
+
+  File file = fs.open(path, FILE_WRITE);
+  if (!file) {
+    Serial.println("Failed to open file for writing");
+    return;
+  }
+ 
+  if (!file.write(buf, len)) {
+      Serial.println("Write failed");
+      return;
+    }
+
+  file.flush();
+  file.close();
+
+  Serial.printf("Write [%s] Complete", path);
+}
+
+void ReadFile(fs::FS &fs, const char *path, uint8_t *buf, int len)
+{
+  Serial.printf("read [%s]...\n", path);
+
+  File file = fs.open(path);
+  if (!file) {
+    Serial.println("Failed to open file for reading");
+    return;
+  }
+
+  if (!file.read(buf, len)) {
+      Serial.println("Read failed");
+      return;
+  }
+ 
+  file.close();
+
+  Serial.printf("Read [%s] Complete: %s", path, buf);
+}
+
+void testIO(fs::FS &fs)
+{
+  char buf[] = "hello world";
+
+  WriteFile(fs, "/test.txt", (uint8_t *)buf, strlen(buf));
+  ReadFile(fs, "/test.txt", (uint8_t *)buf, strlen(buf));
+}
+
+void setup() {
+  pinMode(2,INPUT_PULLUP);
+  // put your setup code here, to run once:
+  Serial.begin(115200);
+  Serial.println("Please insert SD card");
+  delay(1000);
+ 
+  /* SD_MMC 1-bit Mode */
+  if (!SD_MMC.begin("/cdcard", true)) {
+    Serial.println("Card Mount Failed");
+    return;
+  }
+  testIO(SD_MMC);
+  SD_MMC.end(); // cancel SD card mount
+}
+void loop() {
+}

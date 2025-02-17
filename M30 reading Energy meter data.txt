@@ -1,0 +1,45 @@
+#include <ModbusMaster.h>
+#include <arduino.h>
+#include "HardwareSerial.h"
+ModbusMaster node;
+HardwareSerial my485Serial(2);
+
+#define CHANNEL     0
+
+String temp="";
+void read_485(){
+  while(my485Serial.available()>0)
+  {
+    temp = my485Serial.readString();   //read one data then delete it from buffer
+     Serial.println(temp);
+     //delay(100);
+  }
+  temp="";
+}
+
+void setup() {
+  // put your setup code here, to run once:
+
+  Serial.begin(115200);
+  my485Serial.begin(115200,SERIAL_8N1,32,33);///rx:32  tx:33
+  while(my485Serial.read()>0){}
+  node.begin(1,my485Serial);
+ 
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  //first chip BL0910 address:100  second chip BL0910 address:200  third chip BL0910 address:300  every address have 35 bytes data
+  if(0 == node.readHoldingRegisters(100,35))
+  {
+      Serial.print("register value: ");
+      for(int i=0;i<35;i++)
+      {
+        Serial.print(node.getResponseBuffer(i));
+        Serial.print(" ");
+      }
+  }
+  Serial.println(" ");
+  Serial.println("next circle!");
+  delay(500);
+}
