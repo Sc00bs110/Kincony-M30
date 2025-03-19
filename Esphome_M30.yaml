@@ -1,64 +1,88 @@
 substitutions:
-  correction_factor_30A: "0.00098"
-  correction_factor_60A: "0.00049"
-  correction_factor_71A: "0.00042"
-  correction_factor_100A: "0.00030"
-  correction_factor_120A: "0.00025"
-  correction_factor_300A: "0.00010"
+  max_current_range1: "10"
+  max_current_range2: "10"
+  max_current_range3: "10"
+  max_current_range4: "10"
+  max_current_range5: "10"
+  max_current_range6: "10"
+  max_current_range7: "10"
+  max_current_range8: "10"
+  max_current_range9: "10"
+  max_current_range10: "10"
+  max_current_range11: "10"
+  max_current_range12: "10"
+  max_current_range13: "10"
+  max_current_range14: "10"
+  max_current_range15: "10"
+  max_current_range16: "10"
+  max_current_range17: "10"
+  max_current_range18: "10"
+  max_current_range19: "10"
+  max_current_range20: "10"
+  max_current_range21: "10"
+  max_current_range22: "10"
+  max_current_range23: "10"
+  max_current_range24: "10"
+  max_current_range25: "10"
+  max_current_range26: "10"
+  max_current_range27: "10"
+  max_current_range28: "10"
+  max_current_range29: "10"
+  max_current_range30: "10"
 
-  max_current_30A: "30"
-  max_current_60A: "60"
-  max_current_71A: "71"
-  max_current_100A: "100"
-  max_current_120A: "120"
-  max_current_300A: "300"
+  # CT coil correction factors
+  ct_30a_correction: "1.0597"    # Updated for 30A CT
+  ct_60a_correction: "1.2044"    # Updated for 60A CT
+  ct_72a_correction: "0.7121"    # Updated for 72A CT
+  ct_100a_correction: "1.3998"   # Updated for 100A CT
+  ct_no_clamp: "0.0"            # Added for no CT clamp installed
 
-  max_current_range1: ${max_current_30A}
-  max_current_range2: ${max_current_30A}
-  max_current_range3: ${max_current_30A}
-  max_current_range4: ${max_current_30A}
-  max_current_range5: ${max_current_30A}
-  max_current_range6: ${max_current_30A}
-  max_current_range7: ${max_current_30A}
-  max_current_range8: ${max_current_30A}
-  max_current_range9: ${max_current_30A}
-  max_current_range10: ${max_current_30A}
-  max_current_range11: ${max_current_30A}
-  max_current_range12: ${max_current_30A}
-  max_current_range13: ${max_current_30A}
-  max_current_range14: ${max_current_30A}
-  max_current_range15: ${max_current_30A}
-  max_current_range16: ${max_current_30A}
-  max_current_range17: ${max_current_30A}
-  max_current_range18: ${max_current_30A}
-  max_current_range19: ${max_current_30A}
-  max_current_range20: ${max_current_30A}
-  max_current_range21: ${max_current_30A}
-  max_current_range22: ${max_current_30A}
-  max_current_range23: ${max_current_30A}
-  max_current_range24: ${max_current_30A}
-  max_current_range25: ${max_current_30A}
-  max_current_range26: ${max_current_30A}
-  max_current_range27: ${max_current_30A}
-  max_current_range28: ${max_current_30A}
-  max_current_range29: ${max_current_30A}
-  max_current_range30: ${max_current_30A}
+  # CT coil assignments for each sensor
+  ct_m30_1_current_1: "${ct_30a_correction}"   # 30A CT
+  ct_m30_1_current_2: "${ct_60a_correction}"   # 60A CT
+  ct_m30_1_current_3: "${ct_100a_correction}"  # 100A CT
+  ct_m30_1_current_4: "${ct_72a_correction}"   # 72A CT
+  ct_m30_1_current_5: "${ct_no_clamp}"         # No CT clamp
+  ct_m30_1_current_6: "${ct_no_clamp}"
+  ct_m30_1_current_7: "${ct_no_clamp}"
+  ct_m30_1_current_8: "${ct_no_clamp}"
+  ct_m30_1_current_9: "${ct_no_clamp}"
+  ct_m30_1_current_10: "${ct_no_clamp}"
+  ct_m30_2_current_1: "${ct_no_clamp}"
+  ct_m30_2_current_2: "${ct_no_clamp}"
+  ct_m30_2_current_3: "${ct_no_clamp}"
+  ct_m30_2_current_4: "${ct_no_clamp}"
+  ct_m30_2_current_5: "${ct_no_clamp}"
+  ct_m30_2_current_6: "${ct_no_clamp}"
+  ct_m30_2_current_7: "${ct_no_clamp}"
+  ct_m30_2_current_8: "${ct_no_clamp}"
+  ct_m30_2_current_9: "${ct_no_clamp}"
+  ct_m30_2_current_10: "${ct_no_clamp}"
+  ct_m30_3_current_1: "${ct_no_clamp}"
+  ct_m30_3_current_2: "${ct_no_clamp}"
+  ct_m30_3_current_3: "${ct_no_clamp}"
+  ct_m30_3_current_4: "${ct_no_clamp}"
+  ct_m30_3_current_5: "${ct_no_clamp}"
+  ct_m30_3_current_6: "${ct_no_clamp}"
+  ct_m30_3_current_7: "${ct_no_clamp}"
+  ct_m30_3_current_8: "${ct_no_clamp}"
+  ct_m30_3_current_9: "${ct_no_clamp}"
+  ct_m30_3_current_10: "${ct_no_clamp}"
 
 esphome:
   name: m30
   friendly_name: m30
+  min_version: 2024.11.0
+  name_add_mac_suffix: false
 
 esp32:
   board: esp32dev
   framework:
-    type: arduino
+    type: esp-idf
 
-
-# Enable logging
 logger:
   # baud_rate: 0
 
-# Enable Home Assistant API
 api:
   encryption:
     key: "8G0kVEA0/DqgAavgKNyy9EYUrWo6pEZM38JVMAryJv8="
@@ -80,14 +104,10 @@ uart:
   tx_pin: 33
   baud_rate: 115200
   stop_bits: 1
-  data_bits: 8
-  parity: NONE
- 
 
 modbus:
   id: modbus_hub
   uart_id: modbus_uart
- 
 
 modbus_controller:
   - id: modbus_hub_m30
@@ -106,20 +126,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_1_current_1}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_1_current_1).state;
-              float red = (current - 0.0) / ${max_current_range1};
-              float green = (${max_current_range1} - current) / ${max_current_range1};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED1).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_1_current_1).state;
+            float red = (current - 0.0) / ${max_current_range1};
+            float green = (${max_current_range1} - current) / ${max_current_range1};
+            float blue = 0.0;
+            auto call = id(M30_LED1).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 101
@@ -130,20 +150,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_1_current_2}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_1_current_2).state;
-              float red = (current - 0.0) / ${max_current_range2};
-              float green = (${max_current_range2} - current) / ${max_current_range2};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED2).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();   
+      then:
+        - lambda: |- 
+            float current = id(m30_1_current_2).state;
+            float red = (current - 0.0) / ${max_current_range2};
+            float green = (${max_current_range2} - current) / ${max_current_range2};
+            float blue = 0.0;
+            auto call = id(M30_LED2).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 102
@@ -154,20 +174,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_1_current_3}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_1_current_3).state;
-              float red = (current - 0.0) / ${max_current_range3};
-              float green = (${max_current_range3} - current) / ${max_current_range3};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED3).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_1_current_3).state;
+            float red = (current - 0.0) / ${max_current_range3};
+            float green = (${max_current_range3} - current) / ${max_current_range3};
+            float blue = 0.0;
+            auto call = id(M30_LED3).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 103
@@ -178,20 +198,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_1_current_4}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_1_current_4).state;
-              float red = (current - 0.0) / ${max_current_range4};
-              float green = (${max_current_range4} - current) / ${max_current_range4};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED4).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_1_current_4).state;
+            float red = (current - 0.0) / ${max_current_range4};
+            float green = (${max_current_range4} - current) / ${max_current_range4};
+            float blue = 0.0;
+            auto call = id(M30_LED4).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 104
@@ -202,20 +222,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_1_current_5}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_1_current_5).state;
-              float red = (current - 0.0) / ${max_current_range5};
-              float green = (${max_current_range5} - current) / ${max_current_range5};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED5).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_1_current_5).state;
+            float red = (current - 0.0) / ${max_current_range5};
+            float green = (${max_current_range5} - current) / ${max_current_range5};
+            float blue = 0.0;
+            auto call = id(M30_LED5).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 105
@@ -226,20 +246,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_1_current_6}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_1_current_6).state;
-              float red = (current - 0.0) / ${max_current_range6};
-              float green = (${max_current_range6} - current) / ${max_current_range6};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED6).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_1_current_6).state;
+            float red = (current - 0.0) / ${max_current_range6};
+            float green = (${max_current_range6} - current) / ${max_current_range6};
+            float blue = 0.0;
+            auto call = id(M30_LED6).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 106
@@ -250,20 +270,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_1_current_7}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_1_current_7).state;
-              float red = (current - 0.0) / ${max_current_range7};
-              float green = (${max_current_range7} - current) / ${max_current_range7};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED7).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_1_current_7).state;
+            float red = (current - 0.0) / ${max_current_range7};
+            float green = (${max_current_range7} - current) / ${max_current_range7};
+            float blue = 0.0;
+            auto call = id(M30_LED7).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 107
@@ -274,20 +294,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_1_current_8}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_1_current_8).state;
-              float red = (current - 0.0) / ${max_current_range8};
-              float green = (${max_current_range8} - current) / ${max_current_range8};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED8).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_1_current_8).state;
+            float red = (current - 0.0) / ${max_current_range8};
+            float green = (${max_current_range8} - current) / ${max_current_range8};
+            float blue = 0.0;
+            auto call = id(M30_LED8).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 108
@@ -298,20 +318,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_1_current_9}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_1_current_9).state;
-              float red = (current - 0.0) / ${max_current_range9};
-              float green = (${max_current_range9} - current) / ${max_current_range9};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED9).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_1_current_9).state;
+            float red = (current - 0.0) / ${max_current_range9};
+            float green = (${max_current_range9} - current) / ${max_current_range9};
+            float blue = 0.0;
+            auto call = id(M30_LED9).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 109
@@ -322,20 +342,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_1_current_10}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_1_current_10).state;
-              float red = (current - 0.0) / ${max_current_range10};
-              float green = (${max_current_range10} - current) / ${max_current_range10};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED10).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_1_current_10).state;
+            float red = (current - 0.0) / ${max_current_range10};
+            float green = (${max_current_range10} - current) / ${max_current_range10};
+            float blue = 0.0;
+            auto call = id(M30_LED10).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 110
@@ -578,15 +598,6 @@ sensor:
     value_type: U_WORD
     filters:
       - multiply: 0.1
-  # - platform: modbus_controller
-  #  modbus_controller_id: modbus_hub_m30
-  #  address: 134
-  #  register_type: holding
-  #  name: m30_1_tps_2
-  #  id: m30_1_tps_2
-  #  unit_of_measurement: °C
-  #  accuracy_decimals: 1
-  #  value_type: U_WORD
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 200
@@ -597,20 +608,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_2_current_1}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_2_current_1).state;
-              float red = (current - 0.0) / ${max_current_range11};
-              float green = (${max_current_range11} - current) / ${max_current_range11};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED11).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_2_current_1).state;
+            float red = (current - 0.0) / ${max_current_range11};
+            float green = (${max_current_range11} - current) / ${max_current_range11};
+            float blue = 0.0;
+            auto call = id(M30_LED11).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 201
@@ -621,20 +632,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_2_current_2}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_2_current_2).state;
-              float red = (current - 0.0) / ${max_current_range12};
-              float green = (${max_current_range12} - current) / ${max_current_range12};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED12).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_2_current_2).state;
+            float red = (current - 0.0) / ${max_current_range12};
+            float green = (${max_current_range12} - current) / ${max_current_range12};
+            float blue = 0.0;
+            auto call = id(M30_LED12).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 202
@@ -645,20 +656,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_2_current_3}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_2_current_3).state;
-              float red = (current - 0.0) / ${max_current_range13};
-              float green = (${max_current_range13} - current) / ${max_current_range13};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED13).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_2_current_3).state;
+            float red = (current - 0.0) / ${max_current_range13};
+            float green = (${max_current_range13} - current) / ${max_current_range13};
+            float blue = 0.0;
+            auto call = id(M30_LED13).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 203
@@ -669,20 +680,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_2_current_4}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_2_current_4).state;
-              float red = (current - 0.0) / ${max_current_range14};
-              float green = (${max_current_range14} - current) / ${max_current_range14};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED14).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_2_current_4).state;
+            float red = (current - 0.0) / ${max_current_range14};
+            float green = (${max_current_range14} - current) / ${max_current_range14};
+            float blue = 0.0;
+            auto call = id(M30_LED14).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 204
@@ -693,20 +704,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_2_current_5}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_2_current_5).state;
-              float red = (current - 0.0) / ${max_current_range15};
-              float green = (${max_current_range15} - current) / ${max_current_range15};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED15).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_2_current_5).state;
+            float red = (current - 0.0) / ${max_current_range15};
+            float green = (${max_current_range15} - current) / ${max_current_range15};
+            float blue = 0.0;
+            auto call = id(M30_LED15).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 205
@@ -717,20 +728,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_2_current_6}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_2_current_6).state;
-              float red = (current - 0.0) / ${max_current_range16};
-              float green = (${max_current_range16} - current) / ${max_current_range16};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED16).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_2_current_6).state;
+            float red = (current - 0.0) / ${max_current_range16};
+            float green = (${max_current_range16} - current) / ${max_current_range16};
+            float blue = 0.0;
+            auto call = id(M30_LED16).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 206
@@ -741,20 +752,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_2_current_7}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_2_current_7).state;
-              float red = (current - 0.0) / ${max_current_range17};
-              float green = (${max_current_range17} - current) / ${max_current_range17};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED17).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_2_current_7).state;
+            float red = (current - 0.0) / ${max_current_range17};
+            float green = (${max_current_range17} - current) / ${max_current_range17};
+            float blue = 0.0;
+            auto call = id(M30_LED17).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 207
@@ -765,20 +776,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_2_current_8}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_2_current_8).state;
-              float red = (current - 0.0) / ${max_current_range18};
-              float green = (${max_current_range18} - current) / ${max_current_range18};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED18).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_2_current_8).state;
+            float red = (current - 0.0) / ${max_current_range18};
+            float green = (${max_current_range18} - current) / ${max_current_range18};
+            float blue = 0.0;
+            auto call = id(M30_LED18).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 208
@@ -789,20 +800,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_2_current_9}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_2_current_9).state;
-              float red = (current - 0.0) / ${max_current_range19};
-              float green = (${max_current_range19} - current) / ${max_current_range19};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED19).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_2_current_9).state;
+            float red = (current - 0.0) / ${max_current_range19};
+            float green = (${max_current_range19} - current) / ${max_current_range19};
+            float blue = 0.0;
+            auto call = id(M30_LED19).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 209
@@ -813,20 +824,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_2_current_10}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_2_current_10).state;
-              float red = (current - 0.0) / ${max_current_range20};
-              float green = (${max_current_range20} - current) / ${max_current_range20};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED20).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_2_current_10).state;
+            float red = (current - 0.0) / ${max_current_range20};
+            float green = (${max_current_range20} - current) / ${max_current_range20};
+            float blue = 0.0;
+            auto call = id(M30_LED20).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 210
@@ -1069,15 +1080,6 @@ sensor:
     value_type: U_WORD
     filters:
       - multiply: 0.1
-  # - platform: modbus_controller
-  #  modbus_controller_id: modbus_hub_m30
-  #  address: 234
-  #  register_type: holding
-  #  name: m30_2_tps_2
-  #  id: m30_2_tps_2
-  #  unit_of_measurement: °C
-  #  accuracy_decimals: 1
-  #  value_type: U_WORD
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 300
@@ -1088,20 +1090,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_3_current_1}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_3_current_1).state;
-              float red = (current - 0.0) / ${max_current_range21};
-              float green = (${max_current_range21} - current) / ${max_current_range21};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED21).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_3_current_1).state;
+            float red = (current - 0.0) / ${max_current_range21};
+            float green = (${max_current_range21} - current) / ${max_current_range21};
+            float blue = 0.0;
+            auto call = id(M30_LED21).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 301
@@ -1112,20 +1114,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_3_current_2}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_3_current_2).state;
-              float red = (current - 0.0) / ${max_current_range22};
-              float green = (${max_current_range22} - current) / ${max_current_range22};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED22).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_3_current_2).state;
+            float red = (current - 0.0) / ${max_current_range22};
+            float green = (${max_current_range22} - current) / ${max_current_range22};
+            float blue = 0.0;
+            auto call = id(M30_LED22).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 302
@@ -1136,20 +1138,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_3_current_3}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_3_current_3).state;
-              float red = (current - 0.0) / ${max_current_range23};
-              float green = (${max_current_range23} - current) / ${max_current_range23};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED23).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_3_current_3).state;
+            float red = (current - 0.0) / ${max_current_range23};
+            float green = (${max_current_range23} - current) / ${max_current_range23};
+            float blue = 0.0;
+            auto call = id(M30_LED23).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 303
@@ -1160,20 +1162,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_3_current_4}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_3_current_4).state;
-              float red = (current - 0.0) / ${max_current_range24};
-              float green = (${max_current_range24} - current) / ${max_current_range24};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED24).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_3_current_4).state;
+            float red = (current - 0.0) / ${max_current_range24};
+            float green = (${max_current_range24} - current) / ${max_current_range24};
+            float blue = 0.0;
+            auto call = id(M30_LED24).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 304
@@ -1184,20 +1186,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_3_current_5}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_3_current_5).state;
-              float red = (current - 0.0) / ${max_current_range25};
-              float green = (${max_current_range25} - current) / ${max_current_range25};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED25).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_3_current_5).state;
+            float red = (current - 0.0) / ${max_current_range25};
+            float green = (${max_current_range25} - current) / ${max_current_range25};
+            float blue = 0.0;
+            auto call = id(M30_LED25).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 305
@@ -1208,20 +1210,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_3_current_6}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_3_current_6).state;
-              float red = (current - 0.0) / ${max_current_range26};
-              float green = (${max_current_range26} - current) / ${max_current_range26};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED26).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_3_current_6).state;
+            float red = (current - 0.0) / ${max_current_range26};
+            float green = (${max_current_range26} - current) / ${max_current_range26};
+            float blue = 0.0;
+            auto call = id(M30_LED26).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 306
@@ -1232,20 +1234,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_3_current_7}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_3_current_7).state;
-              float red = (current - 0.0) / ${max_current_range27};
-              float green = (${max_current_range27} - current) / ${max_current_range27};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED27).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_3_current_7).state;
+            float red = (current - 0.0) / ${max_current_range27};
+            float green = (${max_current_range27} - current) / ${max_current_range27};
+            float blue = 0.0;
+            auto call = id(M30_LED27).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 307
@@ -1256,20 +1258,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_3_current_8}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_3_current_8).state;
-              float red = (current - 0.0) / ${max_current_range28};
-              float green = (${max_current_range28} - current) / ${max_current_range28};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED28).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_3_current_8).state;
+            float red = (current - 0.0) / ${max_current_range28};
+            float green = (${max_current_range28} - current) / ${max_current_range28};
+            float blue = 0.0;
+            auto call = id(M30_LED28).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 308
@@ -1280,20 +1282,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_3_current_9}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_3_current_9).state;
-              float red = (current - 0.0) / ${max_current_range29};
-              float green = (${max_current_range29} - current) / ${max_current_range29};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED29).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_3_current_9).state;
+            float red = (current - 0.0) / ${max_current_range29};
+            float green = (${max_current_range29} - current) / ${max_current_range29};
+            float blue = 0.0;
+            auto call = id(M30_LED29).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 309
@@ -1304,20 +1306,20 @@ sensor:
     accuracy_decimals: 3
     value_type: U_WORD
     filters:
-      - multiply: ${correction_factor_30A}
+      - multiply: 0.001  # Convert mA to A
+      - multiply: ${ct_m30_3_current_10}
     on_value:
-      - then:
-          - lambda: |-
-              float current = id(m30_3_current_10).state;
-              float red = (current - 0.0) / ${max_current_range30};
-              float green = (${max_current_range30} - current) / ${max_current_range30};
-              float blue = 0.0;
-             
-              auto call = id(M30_LED30).turn_on();
-              call.set_brightness(0.6);
-              call.set_rgb(red, green, blue);
-              call.set_color_mode(ColorMode::RGB);
-              call.perform();
+      then:
+        - lambda: |- 
+            float current = id(m30_3_current_10).state;
+            float red = (current - 0.0) / ${max_current_range30};
+            float green = (${max_current_range30} - current) / ${max_current_range30};
+            float blue = 0.0;
+            auto call = id(M30_LED30).turn_on();
+            call.set_brightness(0.6);
+            call.set_rgb(red, green, blue);
+            call.set_color_mode(ColorMode::RGB);
+            call.perform();
   - platform: modbus_controller
     modbus_controller_id: modbus_hub_m30
     address: 310
@@ -1560,264 +1562,221 @@ sensor:
     value_type: U_WORD
     filters:
       - multiply: 0.1
-  # - platform: modbus_controller
-  #  modbus_controller_id: modbus_hub_m30
-  #  address: 334
-  #  register_type: holding
-  #  name: m30_3_tps_2
-  #  id: m30_3_tps_2
-  #  unit_of_measurement: °C
-  #  accuracy_decimals: 1
-  #  value_type: U_WORD
-
 
 light:
   - platform: partition
-    name: "M30_LED1"
+    name: "M30 LED1"
     id: M30_LED1
     segments:
       - id: light1
         from: 14
         to: 14
-
-
   - platform: partition
-    name: "M30_LED2"
+    name: "M30 LED2"
     id: M30_LED2
     segments:
       - id: light1
         from: 13
         to: 13
-
   - platform: partition
-    name: "M30_LED3"
+    name: "M30 LED3"
     id: M30_LED3
     segments:
       - id: light1
         from: 12
         to: 12
-
   - platform: partition
-    name: "M30_LED4"
+    name: "M30 LED4"
     id: M30_LED4
     segments:
       - id: light1
         from: 11
         to: 11
-
   - platform: partition
-    name: "M30_LED5"
+    name: "M30 LED5"
     id: M30_LED5
     segments:
       - id: light1
         from: 10
         to: 10
-
   - platform: partition
-    name: "M30_LED6"
+    name: "M30 LED6"
     id: M30_LED6
     segments:
       - id: light1
         from: 9
         to: 9
-
   - platform: partition
-    name: "M30_LED7"
+    name: "M30 LED7"
     id: M30_LED7
     segments:
       - id: light1
         from: 8
         to: 8
-
   - platform: partition
-    name: "M30_LED8"
+    name: "M30 LED8"
     id: M30_LED8
     segments:
       - id: light1
         from: 7
         to: 7
-
   - platform: partition
-    name: "M30_LED9"
+    name: "M30 LED9"
     id: M30_LED9
     segments:
       - id: light1
         from: 6
         to: 6
-
   - platform: partition
-    name: "M30_LED10"
+    name: "M30 LED10"
     id: M30_LED10
     segments:
       - id: light1
         from: 5
         to: 5
-
   - platform: partition
-    name: "M30_LED11"
+    name: "M30 LED11"
     id: M30_LED11
     segments:
       - id: light1
         from: 4
         to: 4
-
   - platform: partition
-    name: "M30_LED12"
+    name: "M30 LED12"
     id: M30_LED12
     segments:
       - id: light1
         from: 3
         to: 3
-
   - platform: partition
-    name: "M30_LED13"
+    name: "M30 LED13"
     id: M30_LED13
     segments:
       - id: light1
         from: 2
         to: 2
-
   - platform: partition
-    name: "M30_LED14"
+    name: "M30 LED14"
     id: M30_LED14
     segments:
       - id: light1
         from: 1
         to: 1
-
   - platform: partition
-    name: "M30_LED15"
+    name: "M30 LED15"
     id: M30_LED15
     segments:
       - id: light1
         from: 0
         to: 0
-
   - platform: partition
-    name: "M30_LED16"
+    name: "M30 LED16"
     id: M30_LED16
     segments:
       - id: light1
         from: 15
         to: 15
-
   - platform: partition
-    name: "M30_LED17"
+    name: "M30 LED17"
     id: M30_LED17
     segments:
       - id: light1
         from: 16
         to: 16
-
   - platform: partition
-    name: "M30_LED18"
+    name: "M30 LED18"
     id: M30_LED18
     segments:
       - id: light1
         from: 17
         to: 17
-
   - platform: partition
-    name: "M30_LED19"
+    name: "M30 LED19"
     id: M30_LED19
     segments:
       - id: light1
         from: 18
         to: 18
-
   - platform: partition
-    name: "M30_LED20"
+    name: "M30 LED20"
     id: M30_LED20
     segments:
       - id: light1
         from: 19
         to: 19
-
   - platform: partition
-    name: "M30_LED21"
+    name: "M30 LED21"
     id: M30_LED21
     segments:
       - id: light1
         from: 20
         to: 20
-
   - platform: partition
-    name: "M30_LED22"
+    name: "M30 LED22"
     id: M30_LED22
     segments:
       - id: light1
         from: 21
         to: 21
-
   - platform: partition
-    name: "M30_LED23"
+    name: "M30 LED23"
     id: M30_LED23
     segments:
       - id: light1
         from: 22
         to: 22
-
   - platform: partition
-    name: "M30_LED24"
+    name: "M30 LED24"
     id: M30_LED24
     segments:
       - id: light1
         from: 23
         to: 23
-
   - platform: partition
-    name: "M30_LED25"
+    name: "M30 LED25"
     id: M30_LED25
     segments:
       - id: light1
         from: 24
         to: 24
-
   - platform: partition
-    name: "M30_LED26"
+    name: "M30 LED26"
     id: M30_LED26
     segments:
       - id: light1
         from: 25
         to: 25
-
   - platform: partition
-    name: "M30_LED27"
+    name: "M30 LED27"
     id: M30_LED27
     segments:
       - id: light1
         from: 26
         to: 26
-
   - platform: partition
-    name: "M30_LED28"
+    name: "M30 LED28"
     id: M30_LED28
     segments:
       - id: light1
         from: 27
         to: 27
-
   - platform: partition
-    name: "M30_LED29"
+    name: "M30 LED29"
     id: M30_LED29
     segments:
       - id: light1
         from: 28
         to: 28
-
   - platform: partition
-    name: "M30_LED30"
+    name: "M30 LED30"
     id: M30_LED30
     segments:
       - id: light1
         from: 29
         to: 29
-       
-  # Example for light segment source
   - platform: esp32_rmt_led_strip
     id: light1
     rgb_order: GRB
-    pin: GPIO12
+    pin: GPIO13
     num_leds: 30
-    rmt_channel: 0
     chipset: ws2812
